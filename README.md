@@ -1,11 +1,9 @@
-# Group "GROUP NAME"
+# Group "Ing"
 
 ## Members
-- s123456 LASTNAME FIRSTNAME
-- s123456 LASTNAME FIRSTNAME
-- s123456 LASTNAME FIRSTNAME
+- s314325 Canavero Serena
 
-# Exercise "NAME OF EXERCISE"
+# Exercise "Rescuing Surplus Food"
 
 # Lab Journal
 
