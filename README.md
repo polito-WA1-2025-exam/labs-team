@@ -7,4 +7,10 @@
 
 # Lab Journal
 
-(you may update this file to keep track of the progress of your group work, throughout the weeks)
+Local database: 
+establishments: store/restaurant info
+bags: info about each bag
+food_items: info about each food type
+bag_contents: which foods and how many in which bag
+users: user accounts
+shopping_cart: which bags users reserved

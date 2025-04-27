@@ -1,0 +1,23 @@
+{
+  "name": "labs-team",
+  "version": "1.0.0",
+  "description": "- s314325 Canavero Serena",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polito-WA1-2025-exam/labs-team.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/polito-WA1-2025-exam/labs-team/issues"
+  },
+  "homepage": "https://github.com/polito-WA1-2025-exam/labs-team#readme",
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "sqlite3": "^5.1.7"
+  }
+}
