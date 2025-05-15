@@ -14,7 +14,7 @@ function Establishment (id, name, address, phone, category) {
         
 }
 
-function Bag (id, type, content, price, size, establishmentId, pickupTimeRange, state = "available") {
+function Bag (id, type, content, price, size, establishmentId, pickupTimeRange, date, state = "available") {
         this.id = id;
         this.type = type;
         this.content = content || [];
@@ -22,6 +22,7 @@ function Bag (id, type, content, price, size, establishmentId, pickupTimeRange, 
         this.size = size;
         this.establishmentId = establishmentId;
         this.pickupTimeRange = pickupTimeRange;
+        this.date = date;
         this.state = state;
 
         this.getFoodItems = () => new Promise( (resolve, reject) => {

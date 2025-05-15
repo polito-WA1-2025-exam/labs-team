@@ -2,12 +2,12 @@
 import BagCard from './BagCard';
 import { Row, Col } from 'react-bootstrap';
 
-function BagList({ bags, onAddToCart }) {
+function BagList(props) {
   return (
     <Row className="row-cols-1 row-cols-md-2 g-4">
-      {bags.map((bag) => (
+      {props.bags.map((bag) => (
         <Col key={bag.id}>
-          <BagCard bag={bag} onAddToCart={onAddToCart} />
+          <BagCard bag={bag} onAddToCart={props.onAddToCart} openModal={props.openModal} />
         </Col>
       ))}
     </Row>

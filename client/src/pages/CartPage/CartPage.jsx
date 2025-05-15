@@ -3,38 +3,14 @@ import { useState } from 'react';
 import NavbarComponent from './NavbarComponent';
 import CartItem from './CartItem';
 import { Container, Form, Button } from 'react-bootstrap';
+import BagModalEditable from './BagModalEditable';
 
-function CartPage() {
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      type: 'regular',
-      size: 'Large',
-      price: 6.00,
-      pickupTimeRange: '18:00 - 19:00',
-      content: [
-        { id: 101, name: 'Juice', icon: 'bi-cup-straw' },
-        { id: 102, name: 'Bread', icon: 'bi-basket' }
-      ]
-    },
-    {
-      id: 2,
-      type: 'surprise',
-      size: 'Medium',
-      price: 4.50,
-      pickupTimeRange: '19:00 - 20:00',
-      content: []
-    }
-  ]);
 
+function CartPage(props) {
   const [allergies, setAllergies] = useState('');
 
-  const removeBag = (bagId) => {
-    setCart(cart.filter(b => b.id !== bagId));
-  };
-
   const removeItem = (bagId, itemId) => {
-    setCart(cart.map(b =>
+    props.setCart(prev => prev.map(b =>
       b.id === bagId
         ? { ...b, content: b.content.filter(i => i.id !== itemId) }
         : b
@@ -42,8 +18,27 @@ function CartPage() {
   };
 
   const confirmCart = () => {
-    console.log('Cart confirmed', cart, allergies);
+    console.log('Cart confirmed', props.cart, allergies);
     alert('Cart confirmed!');
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const [selectedBag, setSelectedBag] = useState(null);
+
+  // Function to update a bag's content and track removed items
+  const updateBagContent = (bagId, newContent, removedItems) => {
+  props.setCart(prev =>
+    prev.map(bag =>
+      bag.id === bagId
+        ? { ...bag, content: newContent, _removedItems: removedItems }
+        : bag
+    )
+  );
+ };
+
+  const openModal = (bag) => {
+    setSelectedBag(bag);
+    setShowModal(true);
   };
 
   return (
@@ -51,15 +46,18 @@ function CartPage() {
       <NavbarComponent />
       <Container className="my-4">
         <h2>Your Cart</h2>
-        {cart.map(bag => (
+        {props.cart.map(bag => (
           <CartItem
             key={bag.id}
             bag={bag}
-            onRemoveBag={removeBag}
+            onRemoveBag={props.removeBag}
             onRemoveItem={removeItem}
+            openModal={openModal}
           />
         ))}
-
+        
+        <BagModalEditable show={showModal} onHide={() => setShowModal(false)} bag={selectedBag} onContentUpdate={updateBagContent}/>
+        
         <Form.Group className="my-4">
           <Form.Label>Allergies (if any)</Form.Label>
           <Form.Control
@@ -78,5 +76,6 @@ function CartPage() {
     </>
   );
 }
+
 
 export default CartPage;

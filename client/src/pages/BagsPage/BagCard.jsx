@@ -1,7 +1,7 @@
 // src/pages/BagsPage/BagCard.jsx
 import { Button, Card, Badge } from 'react-bootstrap';
 
-function BagCard({ bag, onAddToCart }) {
+function BagCard({ bag, onAddToCart, openModal }) {
   const isAvailable = bag.state === 'available';
 
   return (
@@ -13,14 +13,7 @@ function BagCard({ bag, onAddToCart }) {
         <p><strong>Pickup Time:</strong> {bag.pickupTimeRange}</p>
 
         {bag.type.toLowerCase() === 'regular' && bag.content?.length > 0 && (
-          <>
-            <p><strong>Contents:</strong></p>
-            <div className="d-flex flex-wrap gap-2">
-              {bag.content.map((item, index) => (
-                <i className={`bi ${item.icon} fs-3`} title={item.name} key={index}></i>
-              ))}
-            </div>
-          </>
+            <Button variant="info" size="sm" onClick={() => openModal(bag)}>View Contents</Button>
         )}
 
         <p className="mt-3">
