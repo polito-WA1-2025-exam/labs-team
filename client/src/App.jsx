@@ -47,14 +47,15 @@ function App() {
   };
 
   return (
-    <Router>
+    <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<EstablishmentsPage />} />
+        <Route path="/establishments" element={<EstablishmentsPage />} />
         <Route path="/establishments/:id/bags" element={<BagsPage addToCart={addToCart} />}/>
         <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} removeBag={removeFromCart}/>} />
       </Routes>
-    </Router>
+    </>
+    
   );
 }
 

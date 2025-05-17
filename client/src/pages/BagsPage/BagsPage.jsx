@@ -1,11 +1,15 @@
 // src/pages/BagsPage/BagsPage.jsx
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import BagList from './BagList';
 import NavbarComponent from './NavbarComponent';
 import { Container } from 'react-bootstrap';
 import BagModalReadOnly from './BagModalReadOnly';
 
 function BagsPage(props) {
+  const { id } = useParams();  // Get the establishment ID from the URL
+  const establishmentId = parseInt(id, 10);
+
   const [bags] = useState([
     {
       id: 1,
@@ -58,13 +62,15 @@ function BagsPage(props) {
           setShowModal(true);
    };
   
- 
+   // Filter bags for the specific establishment
+  const filteredBags = bags.filter(bag => bag.establishmentId === establishmentId);
+
   return (
     <>
-      <NavbarComponent />
+      <NavbarComponent establishmentId={establishmentId}/>
       <Container className="my-4">
-        <h2 className="mb-4">Available Bags</h2>
-        <BagList bags={bags} onAddToCart={props.addToCart} openModal={openModal}/>
+        <h2 className="mb-4">Bags for Establishment #{establishmentId}</h2>
+        <BagList bags={filteredBags} onAddToCart={props.addToCart} openModal={openModal}/>
         <BagModalReadOnly show={showModal} onHide={() => setShowModal(false)} bag={selectedBag} />
       </Container>
     </>

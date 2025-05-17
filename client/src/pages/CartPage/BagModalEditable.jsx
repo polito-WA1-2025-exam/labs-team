@@ -29,7 +29,7 @@ function BagModalEditable({ show, onHide, bag, onContentUpdate }) {
   };
 
   //if (!bag) return null;
-  if (!bag) return <div>⚠️ No bag provided</div>;
+  if (!bag) return <div>I am here</div>;
 
 
   return (
