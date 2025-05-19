@@ -75,3 +75,11 @@ g. delete an existing item
     DELETE /shopping_cart/:userId/:bagId → remove specific bag from shopping cart   
 
 
+Lab 7: Multiple pages through routes 
+
+| URL Path                   | Rendered Component   | Description                                                                |
+| -------------------------- | -------------------- | -------------------------------------------------------------------------- |
+| `/establishments`          | `EstablishmentsPage` | Displays a list of establishments available in the app.                    |
+| `/establishments/:id/bags` | `BagsPage`           | Shows available bags for a specific establishment (by `:id`).              |
+| `/cart`                    | `CartPage`           | Displays the shopping cart with selected bags and allows editing contents. |
+

@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import EstablishmentsPage from './pages/EstablishmentsPage/EstablishmentsPage';
 import BagsPage from './pages/BagsPage/BagsPage';
 import CartPage from './pages/CartPage/CartPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <Route path="/establishments" element={<EstablishmentsPage />} />
         <Route path="/establishments/:id/bags" element={<BagsPage addToCart={addToCart} />}/>
         <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} removeBag={removeFromCart}/>} />
+        <Route path="*" element={<NotFoundPage />} /> {/* Catch-all route */}
       </Routes>
     </>
     
